@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>root</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #1a5c7a;
+            --secondary: #3a9bbc;
+            --accent: #f9a825;
+            --light: #e0f7fa;
+            --dark: #0d3c55;
+            --sand: #f5e1cb;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            background-image: linear-gradient(to bottom, var(--light), white);
+        }
+
+        header {
+            background: linear-gradient(to right, var(--dark), var(--primary));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .logo i {
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(13, 60, 85, 0.85), rgba(13, 60, 85, 0.9)), url('https://images.unsplash.com/photo-1543465077-db45d34b88a5?ixlib=rb-4.0.3') center/cover;
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 3rem;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem 2rem;
+        }
+
+        .card-header h3 {
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .card-body p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 5px solid var(--accent);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto 5rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--secondary);
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .timeline-content {
+            position: relative;
+            width: 45%;
+            padding: 25px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            left: 55%;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            width: 0;
+            height: 0;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -12px;
+            border-left: 12px solid white;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -12px;
+            border-right: 12px solid white;
+        }
+
+        .timeline-year {
+            position: absolute;
+            top: 15px;
+            width: 80px;
+            height: 80px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: white;
+            box-shadow: 0 0 0 8px var(--sand);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-year {
+            right: -40px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-year {
+            left: -40px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 4rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--sand);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #555;
+        }
+
+        .conservation {
+            background: linear-gradient(to right, var(--dark), var(--primary));
+            color: white;
+            padding: 5rem 2rem;
+            margin: 5rem 0;
+            text-align: center;
+        }
+
+        .conservation-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .conservation h2 {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .conservation p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background: #ffb300;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            padding: 0 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .references {
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .references ul {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .references li {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .references li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        @media (max-width: 900px) {
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                width: auto;
+                margin-left: 80px;
+            }
+            
+            .timeline-item:nth-child(even) .timeline-content {
+                left: 0;
+            }
+            
+            .timeline-year {
+                left: 0;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-year,
+            .timeline-item:nth-child(even) .timeline-year {
+                left: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+
+
+    </head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-turtle"></i>
+                <h1>Caretta caretta</h1>
+                <h1>(Evoluzione storica)</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
+                    <li><a href="#evolution"><i class="fas fa-history"></i> Evoluzione</a></li>
+                    <li><a href="#biology"><i class="fas fa-dna"></i> Biologia</a></li>
+                    <li><a href="#timeline"><i class="fas fa-timeline"></i> Linea Temporale</a></li>
+                    <li><a href="#conservation"><i class="fas fa-hands-helping"></i> Conservazione</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Caretta caretta: Un Viaggio Evolutivo</h2>
+            <p>Esploriamo insieme la straordinaria storia evolutiva della tartaruga comune, una specie che ha navigato gli oceani per oltre 100 milioni di anni</p>
+            <a href="#evolution" class="btn">Scopri di più</a>
+        </div>
+    </section>
+
+    <section id="evolution" class="container">
+        <div class="section-title">
+            <h2>Evoluzione Storica</h2>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-fossil"></i> Origini Antiche</h3>
+            </div>
+            <img src="/assets/caretta adulta 2.jpg" alt="Fossile di tartaruga" class="card-image">
+            <div class="card-body">
+                <p>Le tartarughe marine appartengono al gruppo dei Chelonioidi, la cui origine risale al Cretaceo superiore, circa 100 milioni di anni fa. I fossili più antichi di tartarughe marine risalgono a circa 110 milioni di anni fa, durante il periodo Cretaceo.</p>
+                <p>La Caretta caretta, come la conosciamo oggi, si è differenziata dalle altre specie di tartarughe marine durante il Miocene, circa 10-20 milioni di anni fa. Studi filogenetici indicano che il genere Caretta si sia separato dalle altre tartarughe marine circa 40 milioni di anni fa.</p>
+                <p>I reperti fossili dimostrano che le tartarughe marine ancestrali erano molto più grandi delle attuali, con alcune specie che raggiungevano i 4 metri di lunghezza. Nel corso dell'evoluzione, le dimensioni si sono ridotte, probabilmente come adattamento ai cambiamenti ambientali e alla disponibilità di cibo.</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-water"></i> Adattamenti Evolutivi</h3>
+            </div>
+            <img src="/assets/caretta adulta.jpg" alt="Tartaruga marina in acqua" class="card-image">
+            <div class="card-body">
+                <p>L'evoluzione delle tartarughe marine è caratterizzata da straordinari adattamenti alla vita oceanica:</p>
+                <p><strong>Artigli trasformati in pinne:</strong> Gli arti anteriori si sono trasformati in potenti pinne che permettono un movimento efficiente in acqua, mentre gli arti posteriori fungono da timone.</p>
+                <p><strong>Guscio idrodinamico:</strong> Il carapace si è appiattito e ridotto rispetto alle tartarughe terrestri, diventando più leggero e idrodinamico per ridurre la resistenza nell'acqua.</p>
+                <p><strong>Metabolismo rallentato:</strong> Le tartarughe marine hanno sviluppato la capacità di rallentare il loro metabolismo durante le immersioni profonde, permettendo loro di rimanere sott'acqua per lunghi periodi.</p>
+                <p><strong>Navigazione magnetica:</strong> Hanno sviluppato un sofisticato sistema di navigazione che utilizza il campo magnetico terrestre per orientarsi durante le migrazioni transoceaniche.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="biology" class="container">
+        <div class="section-title">
+            <h2>Biologia Evolutiva</h2>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-dna"></i>
+                </div>
+                <h3>Genetica</h3>
+                <p>Studi genetici rivelano una diversità sorprendente tra le diverse popolazioni di Caretta caretta, con differenze significative tra gli esemplari dell'Atlantico e del Pacifico.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-egg"></i>
+                </div>
+                <h3>Riproduzione</h3>
+                <p>L'istinto di nidificazione sulla stessa spiaggia di nascita (natal homing) è un comportamento evoluto nel corso di milioni di anni, con una precisione sorprendente.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-fish"></i>
+                </div>
+                <h3>Alimentazione</h3>
+                <p>La dieta onnivora della Caretta caretta rappresenta un adattamento evolutivo per sopravvivere in diversi ecosistemi marini, dalle barriere coralline alle zone pelagiche.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="timeline" class="container">
+        <div class="section-title">
+            <h2>Linea Temporale Evolutiva</h2>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">110 MYA</div>
+                <div class="timeline-content">
+                    <h3>Origini Cretacee</h3>
+                    <p>Prime tartarughe marine appaiono nel Cretaceo superiore. Fossili mostrano caratteristiche intermedie tra tartarughe terrestri e marine.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-year">65 MYA</div>
+                <div class="timeline-content">
+                    <h3>Sopravvissuta all'estinzione</h3>
+                    <p>Le tartarughe marine sopravvivono all'estinzione di massa del Cretaceo-Paleogene che spazzò via i dinosauri e il 75% delle specie terrestri.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-year">40 MYA</div>
+                <div class="timeline-content">
+                    <h3>Differenziazione del genere</h3>
+                    <p>Il genere Caretta si separa dagli altri chelonidi durante l'Eocene. Comparsa delle prime caratteristiche distintive della Caretta caretta.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-year">15 MYA</div>
+                <div class="timeline-content">
+                    <h3>Adattamenti moderni</h3>
+                    <p>Nel Miocene, la Caretta caretta sviluppa pienamente le caratteristiche anatomiche moderne, tra cui il carapace a forma di cuore e le potenti pinne.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-year">2.5 MYA</div>
+                <div class="timeline-content">
+                    <h3>Era Glaciale</h3>
+                    <p>Durante il Pleistocene, le fluttuazioni climatiche modellano le rotte migratorie e le aree di nidificazione delle tartarughe marine.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="conservation" class="conservation">
+        <div class="conservation-content">
+            <h2>Conservazione della Specie</h2>
+            <p>Nonostante la loro straordinaria resilienza evolutiva, le Caretta caretta sono oggi minacciate dall'inquinamento, dalla pesca accidentale, dal cambiamento climatico e dalla perdita di habitat di nidificazione.</p>
+            <p>Attualmente classificate come "Vulnerabili" dalla Lista Rossa IUCN, la loro sopravvivenza dipende da sforzi di conservazione coordinati a livello globale.</p>
+            <a href="#" class="btn">Partecipa alla Conservazione</a>
+        </div>
+    </section>
+
+    <section class="references">
+        <div class="container">
+            <div class="section-title">
+                <h2>Riferimenti Scientifici</h2>
+            </div>
+            
+            <ul>
+                <li>Bowen, B.W., et al. (2013). "Global phylogeography of the loggerhead turtle revealed by mitochondrial DNA haplotype diversity." Evolution</li>
+                <li>Dodd, C.K. (1988). "Synopsis of the biological data on the loggerhead sea turtle." Biological Report</li>
+                <li>Hirayama, R. (1998). "Oldest known sea turtle." Nature</li>
+                <li>Pritchard, P.C.H. (1997). "Evolution, phylogeny, and current status of sea turtles." CRC Press</li>
+                <li>Wallace, B.P., et al. (2010). "Global conservation priorities for marine turtles." PLOS ONE</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Caretta caretta</h3>
+                <p>Portale scientifico dedicato all'evoluzione storica e alla conservazione della tartaruga comune, una specie iconica dei nostri oceani.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Link Utili</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-link"></i> IUCN Red List</a></li>
+                    <li><a href="#"><i class="fas fa-link"></i> Sea Turtle Conservancy</a></li>
+                    <li><a href="#"><i class="fas fa-link"></i> WWF Marine Turtles</a></li>
+                    <li><a href="#"><i class="fas fa-link"></i> NOAA Fisheries</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contatti</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> info@carettaevolution.it</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Stazione Zoologica, Napoli</li>
+                    <li><i class="fas fa-phone"></i> +39 081 1234567</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Caretta caretta Evolution Project. Tutti i diritti riservati.</p>
+            <p>Sito realizzato a scopo educativo e scientifico.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
