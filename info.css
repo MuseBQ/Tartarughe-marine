@@ -1,0 +1,213 @@
+.hero {
+    background: linear-gradient(rgba(13, 60, 85, 0.85), rgba(13, 60, 85, 0.9)), 
+                url('https://images.unsplash.com/photo-1543465077-db45d34b88a5?ixlib=rb-4.0.3') center/cover;
+    color: white;
+    text-align: center;
+    padding: 8rem 2rem;
+    margin-bottom: 4rem;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 3rem;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    background: linear-gradient(to right, var(--ocean-blue), var(--deep-blue));
+    color: white;
+    padding: 1.5rem 2rem;
+}
+
+.card-header h3 {
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.card-body p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.card-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-bottom: 5px solid var(--sand);
+}
+
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto 5rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--ocean-blue);
+    left: 50%;
+    margin-left: -2px;
+    border-radius: 2px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.timeline-content {
+    position: relative;
+    width: 45%;
+    padding: 25px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    left: 0;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    left: 55%;
+}
+
+.timeline-year {
+    position: absolute;
+    top: 15px;
+    width: 80px;
+    height: 80px;
+    background: var(--sand);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--dark-text);
+    box-shadow: 0 0 0 8px var(--light-blue);
+}
+
+.timeline-item:nth-child(odd) .timeline-year {
+    right: -40px;
+}
+
+.timeline-item:nth-child(even) .timeline-year {
+    left: -40px;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 4rem;
+}
+
+.feature-card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--sand);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+    font-size: 2rem;
+    color: var(--ocean-blue);
+}
+
+.feature-card h3 {
+    color: var(--ocean-blue);
+    margin-bottom: 15px;
+}
+
+.conservation-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.conservation-content h2 {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+}
+
+.conservation-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+@media (max-width: 900px) {
+    .timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-content {
+        width: auto;
+        margin-left: 80px;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-content {
+        left: 0;
+    }
+    
+    .timeline-year {
+        left: 0;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-year,
+    .timeline-item:nth-child(even) .timeline-year {
+        left: 0;
+    }
+}

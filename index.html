@@ -1,32 +1,23 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
-    <link href="stile.css" rel="stylesheet" type="text/css">
+    <title>Caretta Caretta - Home</title>
+    <link href="common.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
-    <!-- Header con navigazione -->
     <header>
         <div class="nav-container">
             <div class="logo">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 5.5V7H9V5.5L3 7V9L9 10.5V12L5 13V15L9 13.5V15H15V13.5L21 15V13L15 11.5V10.5L21 9Z"
-                        fill="white" />
-                    <path
-                        d="M9 17C9 18.66 10.34 20 12 20C13.66 20 15 18.66 15 17C15 15.34 13.66 14 12 14C10.34 14 9 15.34 9 17Z"
-                        fill="white" />
-                </svg>
+                <img src="assets/icona tartaruga lineart 3 (1).svg" alt="logo">
                 <span>OceanQuest</span>
             </div>
             <nav>
                 <ul>
-                    <li><a href="root.html">La Caretta Caretta</a></li>
-                    <li><a href="#home">Home</a></li>
+                    <li><a href="info.html">Storia</a></li>
                     <li><a href="#gallery">Galleria</a></li>
                     <li><a href="#curiosities">Curiosità</a></li>
                     <li><a href="#contact">Contatti</a></li>
@@ -35,129 +26,76 @@
         </div>
     </header>
 
-    <!-- Sezione Hero -->
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>Scopri il Mondo della Caretta Caretta</h1>
-            <p>Immergiti in un'avventura straordinaria alla scoperta di una delle creature più affascinanti del
-                Mediterraneo. Esplora il suo habitat, le sue abitudini e le sfide che affronta per la sopravvivenza.</p>
-            <a href="#about" class="cta-button">Inizia l'Esplorazione</a>
+            <p>Immergiti in un'avventura straordinaria alla scoperta di una delle creature più affascinanti del Mediterraneo.</p>
+            <a href="#about" class="btn">Inizia l'Esplorazione</a>
         </div>
     </section>
 
-    <!-- Sezione Informazioni -->
     <section id="about">
         <h2 class="section-title">La Tartaruga Caretta Caretta</h2>
         <div class="info-container">
             <div class="info-text">
                 <h3>Un Viaggiatore dei Mari</h3>
-                <p>La Caretta caretta, nota anche come tartaruga comune, è una specie pelagica che trascorre la maggior
-                    parte della sua vita in mare aperto, tornando a riva solo per deporre le uova.</p>
-                <p>Questi magnifici rettili marini possono vivere fino a 80 anni e raggiungere dimensioni considerevoli,
-                    con esemplari adulti che superano i 100 kg di peso.</p>
-                <p>Purtroppo, la Caretta caretta è classificata come specie vulnerabile a causa delle numerose minacce
-                    che deve affrontare, tra cui l'inquinamento marino, la pesca accidentale e la distruzione dei siti
-                    di nidificazione.</p>
+                <p>La Caretta caretta, nota anche come tartaruga comune, è una specie pelagica che trascorre la maggior parte della sua vita in mare aperto, tornando a riva solo per deporre le uova.</p>
+                <p>Questi magnifici rettili marini possono vivere fino a 80 anni e raggiungere dimensioni considerevoli, con esemplari adulti che superano i 100 kg di peso.</p>
             </div>
             <div class="info-image">
-                <img src="https://images.unsplash.com/photo-1598505386259-0b876b4a7055?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                    alt="Tartaruga Caretta Caretta nel suo habitat naturale">
+                <img src="assets/caretta adulta 2.jpg" alt="Tartaruga Caretta Caretta">
             </div>
         </div>
     </section>
 
-    <!-- Sezione Galleria -->
     <section id="gallery">
         <h2 class="section-title">Galleria Fotografica</h2>
-        <div class="gallery">
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                        alt="Tartaruga marina in acque profonde">
-                    <div class="gallery-caption">Esploratrice degli abissi</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="/assets/caretta schiusa 3.jpg"
-                        alt="Tartaruga che nuota tra i coralli">
-                    <div class="gallery-caption">Esploratrici.</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="/assets/caretta schiusa 2.jpg"
-                        alt="Piccola tartaruga che raggiunge il mare">
-                    <div class="gallery-caption">Il primo viaggio verso il mare</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="/assets/caretta schiusa.jpg"
-                        alt="Tartaruga in superficie">
-                    <div class="gallery-caption">Respirando la superficie</div>
-                </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Tartaruga marina">
+                <div class="gallery-caption">Esploratrice degli abissi</div>
+            </div>
+            <div class="gallery-item">
+                <img src="/assets/caretta schiusa 3.jpg" alt="Tartaruga che nuota">
+                <div class="gallery-caption">Esploratrici</div>
+            </div>
+            <div class="gallery-item">
+                <img src="/assets/caretta schiusa 2.jpg" alt="Piccola tartaruga">
+                <div class="gallery-caption">Il primo viaggio</div>
+            </div>
+            <div class="gallery-item">
+                <img src="/assets/caretta schiusa.jpg" alt="Tartaruga in superficie">
+                <div class="gallery-caption">Respirando la superficie</div>
             </div>
         </div>
     </section>
 
-    <!-- Sezione Curiosità -->
     <section id="curiosities">
         <h2 class="section-title">Curiosità Avventurose</h2>
-        <div class="curiosities">
-            <div class="curiosities-container">
-                <div class="curiosity-card">
-                    <h3>Navigazione Magnetica</h3>
-                    <p>Le tartarughe Caretta caretta possiedono un incredibile senso dell'orientamento che permette loro
-                        di navigare per migliaia di chilometri usando il campo magnetico terrestre.</p>
-                </div>
-                <div class="curiosity-card">
-                    <h3>Viaggiatrici Instancabili</h3>
-                    <p>Alcuni esemplari di Caretta caretta sono stati registrati mentre percorrevano oltre 12.000 km in
-                        un solo anno, attraversando interi oceani durante le loro migrazioni.</p>
-                </div>
-                <div class="curiosity-card">
-                    <h3>Nidi sulla Sabbia</h3>
-                    <p>Le femmine tornano sempre alla stessa spiaggia dove sono nate per deporre le loro uova, scavando
-                        nidi profondi nella sabbia dove le uova si schiuderanno dopo circa 60 giorni.</p>
-                </div>
-                <div class="curiosity-card">
-                    <h3>Sopravvivenza Impegnativa</h3>
-                    <p>Appena 1 su 1000 piccoli di tartaruga marina riesce a raggiungere l'età adulta, rendendo ogni
-                        esemplare adulto un vero e proprio miracolo della natura.</p>
-                </div>
+        <div class="curiosities-container">
+            <div class="curiosity-card">
+                <h3>Navigazione Magnetica</h3>
+                <p>Le tartarughe Caretta caretta possiedono un incredibile senso dell'orientamento che permette loro di navigare per migliaia di chilometri usando il campo magnetico terrestre.</p>
+            </div>
+            <div class="curiosity-card">
+                <h3>Viaggiatrici Instancabili</h3>
+                <p>Alcuni esemplari di Caretta caretta sono stati registrati mentre percorrevano oltre 12.000 km in un solo anno, attraversando interi oceani durante le loro migrazioni.</p>
+            </div>
+            <div class="curiosity-card">
+                <h3>Nidi sulla Sabbia</h3>
+                <p>Le femmine tornano sempre alla stessa spiaggia dove sono nate per deporre le loro uova, scavando nidi profondi nella sabbia.</p>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer id="contact">
         <div class="footer-content">
             <h2>Unisciti alla Nostra Missione</h2>
             <p>Aiutaci a proteggere queste magnifiche creature e i loro habitat.</p>
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Termini di Servizio</a>
-                <a href="#">Contattaci</a>
-                <a href="#">Diventa Volontario</a>
-            </div>
-            <div class="social-icons">
-                <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                    </svg></a>
-                <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10 5.523 0 10-4.477 10-10 0-5.523-4.477-10-10-10zm0 1.5c4.694 0 8.5 3.806 8.5 8.5 0 4.694-3.806 8.5-8.5 8.5-4.694 0-8.5-3.806-8.5-8.5 0-4.694 3.806-8.5 8.5-8.5zm3.75 2.25a.75.75 0 0 0-.75.75v.01a.75.75 0 0 0 .75-.76zm-7.5 0a.75.75 0 0 0-.75.75v.01a.75.75 0 0 0 .75-.76zm3.787 2.227a4.5 4.5 0 1 1-.002 9.002 4.5 4.5 0 0 1 .002-9.002zm0 1.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" />
-                    </svg></a>
-                <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 10.016 10.016 0 01-3.127 1.195 4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.937 4.937 0 004.604 3.417 9.868 9.868 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63a9.936 9.936 0 002.46-2.543l-.047-.02z" />
-                    </svg></a>
-            </div>
             <p>&copy; 2025 Progetto WebDesign</p>
         </div>
     </footer>
 
     <script src="script.js"></script>
-
 </body>
-
 </html>
