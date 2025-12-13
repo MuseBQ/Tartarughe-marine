@@ -1,10 +1,13 @@
+/* Sezione Hero */
 .hero {
+    /* Uso un'immagine di sfondo di esempio: sostituiscila con la tua */
     background: linear-gradient(rgba(13, 60, 85, 0.85), rgba(13, 60, 85, 0.9)), 
-                url('https://images.unsplash.com/photo-1543465077-db45d34b88a5?ixlib=rb-4.0.3') center/cover;
+                url('WebDesign/Tartaruga\ caretta.png') center/cover;
     color: white;
     text-align: center;
     padding: 8rem 2rem;
     margin-bottom: 4rem;
+    margin-top: 60px; /* Spazio per l'header fisso */
 }
 
 .hero-content {
@@ -13,12 +16,14 @@
 }
 
 .hero h2 {
+    font-family: "Waterlily", cursive, serif;
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero p {
+    font-family: Garamond, serif;
     font-size: 1.4rem;
     margin-bottom: 2rem;
     max-width: 700px;
@@ -26,116 +31,56 @@
     margin-right: auto;
 }
 
+/* Schede Evoluzione */
 .card {
-    background: white;
+    background: var(--white);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
     margin-bottom: 3rem;
+    transition: transform 0.3s;
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
 }
 
 .card-header {
-    background: linear-gradient(to right, var(--ocean-blue), var(--deep-blue));
-    color: white;
-    padding: 1.5rem 2rem;
+    background-color: var(--light-blue);
+    color: var(--deep-blue);
+    padding: 20px;
 }
 
 .card-header h3 {
+    font-family: "Waterlily", cursive, serif;
+    margin: 0;
     font-size: 1.8rem;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.card-body {
-    padding: 2rem;
-}
-
-.card-body p {
-    margin-bottom: 1.5rem;
-    font-size: 1.1rem;
 }
 
 .card-image {
     width: 100%;
     height: 300px;
     object-fit: cover;
-    border-bottom: 5px solid var(--sand);
+    display: block;
 }
 
-.timeline {
-    position: relative;
-    max-width: 1000px;
-    margin: 0 auto 5rem;
+.card-body {
+    padding: 20px;
 }
 
-.timeline::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    background: var(--ocean-blue);
-    left: 50%;
-    margin-left: -2px;
-    border-radius: 2px;
+.card-body p {
+    margin-bottom: 15px;
 }
 
-.timeline-item {
-    position: relative;
-    margin-bottom: 50px;
+.card-body ul {
+    margin-left: 20px;
+    list-style-type: disc;
 }
 
-.timeline-content {
-    position: relative;
-    width: 45%;
-    padding: 25px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.timeline-item:nth-child(odd) .timeline-content {
-    left: 0;
-}
-
-.timeline-item:nth-child(even) .timeline-content {
-    left: 55%;
-}
-
-.timeline-year {
-    position: absolute;
-    top: 15px;
-    width: 80px;
-    height: 80px;
-    background: var(--sand);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: var(--dark-text);
-    box-shadow: 0 0 0 8px var(--light-blue);
-}
-
-.timeline-item:nth-child(odd) .timeline-year {
-    right: -40px;
-}
-
-.timeline-item:nth-child(even) .timeline-year {
-    left: -40px;
-}
-
+/* Feature Biologiche (Migliorate) */
 .features {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     margin-bottom: 4rem;
 }
@@ -151,6 +96,7 @@
 
 .feature-card:hover {
     transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
 .feature-icon {
@@ -162,52 +108,141 @@
     justify-content: center;
     align-items: center;
     margin: 0 auto 20px;
-    font-size: 2rem;
-    color: var(--ocean-blue);
+    font-size: 2.2rem;
+    color: var(--deep-blue);
+    border: 3px solid var(--coral);
 }
 
 .feature-card h3 {
+    font-family: "Waterlily", cursive, serif;
     color: var(--ocean-blue);
     margin-bottom: 15px;
 }
 
+/* Timeline */
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: var(--coral);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -17px;
+    background-color: var(--deep-blue);
+    border: 4px solid var(--sand);
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-year {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--deep-blue);
+    margin-bottom: 5px;
+}
+
+.timeline-content {
+    padding: 20px 30px;
+    background-color: var(--white);
+    position: relative;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-content h3 {
+    font-family: "Waterlily", cursive, serif;
+    color: var(--coral);
+}
+
+/* Posizionamento a sinistra (default) */
+.timeline-item {
+    left: 0;
+}
+
+/* Posizionamento a destra */
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+
+/* Freccia a sinistra */
+.timeline-item:nth-child(even)::after {
+    left: -17px;
+}
+
+/* Linea del tempo a sinistra */
+.timeline-item:nth-child(even) .timeline-content {
+    border-left: 2px solid var(--coral);
+    border-right: none;
+}
+
+/* Media query per la timeline in schermi piccoli */
+@media screen and (max-width: 600px) {
+    .timeline::after {
+        left: 31px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+
+    .timeline-item:nth-child(even) {
+        left: 0%;
+    }
+
+    .timeline-item::after {
+        left: 15px;
+    }
+    
+    .timeline-item:nth-child(even)::after {
+        left: 15px;
+    }
+}
+
+/* Sezione Conservazione Volontariato */
 .conservation-content {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
 }
 
-.conservation-content h2 {
-    font-size: 2.8rem;
-    margin-bottom: 2rem;
+.conservation-content ul {
+    list-style: none;
+    text-align: left;
+    max-width: 600px;
+    margin: 20px auto 30px;
+    padding-left: 0;
 }
 
-.conservation-content p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    line-height: 1.8;
-}
-
-@media (max-width: 900px) {
-    .timeline::before {
-        left: 30px;
-    }
-    
-    .timeline-content {
-        width: auto;
-        margin-left: 80px;
-    }
-    
-    .timeline-item:nth-child(even) .timeline-content {
-        left: 0;
-    }
-    
-    .timeline-year {
-        left: 0;
-    }
-    
-    .timeline-item:nth-child(odd) .timeline-year,
-    .timeline-item:nth-child(even) .timeline-year {
-        left: 0;
-    }
+.conservation-content ul li {
+    background: var(--light-blue);
+    border-left: 5px solid var(--ocean-blue);
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-family: Garamond, serif;
 }

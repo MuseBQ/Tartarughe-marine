@@ -14,7 +14,23 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Waterlily", "Garamond", serif; 
+}
+
+p, li, td, th {
+    font-family: Garamond, serif;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: "Waterlily", cursive, serif;
+    font-weight: bold;
 }
 
 body {
@@ -25,13 +41,27 @@ body {
 
 /* Header e navigazione */
 header {
-    background: linear-gradient(135deg, var(--ocean-blue), var(--deep-blue));
+    background: linear-gradient(135deg, var(--white), var(--light-blue));
     padding: 1rem 2rem;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+header .header-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.header-logo-container span{
+    color: var(--coral);
+    font-weight: bold;
+    font-size: 2.5rem;
 }
 
 .nav-container {
@@ -45,19 +75,28 @@ header {
 .logo {
     display: flex;
     align-items: center;
-    color: var(--white);
-    font-weight: bold;
-    font-size: 2rem;
+    padding: 5px 10px;
+    border-radius: 90px;
+    background-color: var(--white);
+    box-shadow: 0 4px 15px rgba(0, 67, 150, 0.2);
 }
 
 .logo img {
-    height: 140px;
-    margin-right: 10px;
+    height: 180px;
+}
+
+.site-title {
+    color: var(--deep-blue);
+    font-weight: bold;
+    font-size: 2rem;
 }
 
 nav ul {
     display: flex;
     list-style: none;
+    background: #f0f8ff;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0, 67, 150, 0.2);
 }
 
 nav ul li {
@@ -65,7 +104,7 @@ nav ul li {
 }
 
 nav ul li a {
-    color: var(--white);
+    color: var(--dark-text);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s;
@@ -73,7 +112,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: var(--sand);
+    color: var(--ocean-blue);
 }
 
 nav ul li a::after {
@@ -140,6 +179,7 @@ footer {
     font-size: 1.1rem;
     transition: all 0.3s;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    font-family: Garamond, serif;
 }
 
 .btn:hover {
@@ -152,15 +192,19 @@ footer {
 /* Responsive */
 @media (max-width: 768px) {
     nav ul {
-        display: none;
+        display: flex;
+        flex-direction: column;
     }
     
     .mobile-menu-btn {
-        display: block;
-        background: none;
-        border: none;
-        color: var(--white);
-        font-size: 1.5rem;
-        cursor: pointer;
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .info-container {
+        flex-direction: column;
     }
 }
