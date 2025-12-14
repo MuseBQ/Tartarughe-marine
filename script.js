@@ -45,3 +45,39 @@ document.querySelectorAll('section').forEach(section => {
     // Osserva la sezione
     observer.observe(section);
 });
+
+// Funzionalità per il Menù Mobile (Hamburger)
+document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    const navLinks = document.querySelectorAll('nav a'); // Tutti i link nel menù
+
+    if (menuToggle && nav) {
+        // 1. Alterna l'apertura/chiusura al click del pulsante hamburger
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            
+            // Opzionale: cambia l'icona da hamburger (bars) a chiusura (times)
+            const icon = menuToggle.querySelector('i');
+            if (nav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // 2. Chiudi il menù mobile dopo aver cliccato un link (per il smooth scrolling)
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 900) { // Chiudi solo su schermi piccoli
+                    nav.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+    }
+});

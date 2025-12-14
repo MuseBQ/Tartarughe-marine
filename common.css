@@ -37,6 +37,7 @@ body {
     background-color: #f0f8ff;
     color: var(--dark-text);
     overflow-x: hidden;
+    padding-top: 80px;
 }
 
 /* Header e navigazione */
@@ -82,7 +83,8 @@ header .header-logo-container {
 }
 
 .logo img {
-    height: 180px;
+    height: 140px;
+    margin-right: 10px;
 }
 
 .site-title {
@@ -100,7 +102,7 @@ nav ul {
 }
 
 nav ul li {
-    margin-left: 2rem;
+    margin-left: 1.5rem;
 }
 
 nav ul li a {
@@ -109,10 +111,21 @@ nav ul li a {
     font-weight: 500;
     transition: color 0.3s;
     position: relative;
+    font-family: Garamond, serif;
 }
 
 nav ul li a:hover {
     color: var(--ocean-blue);
+}
+
+/* Menù Toggle (Hamburger) - Nascosto su desktop */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--deep-blue);
 }
 
 nav ul li a::after {
@@ -190,21 +203,55 @@ footer {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-    nav ul {
-        display: flex;
-        flex-direction: column;
+@media (max-width: 900px) { /* Ho aumentato il breakpoint per includere più tablet */
+    
+    .nav-container {
+        padding: 0 10px;
+    }
+
+    /* Mostra il pulsante hamburger */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Nasconde la navigazione e la imposta per la visualizzazione mobile */
+    nav {
+        display: none; /* Inizialmente nascosto */
+        position: absolute;
+        top: 80px; /* Sotto l'header */
+        left: 0;
+        width: 100%;
+        background-color: var(--deep-blue); /* Sfondo scuro per contrasto */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        z-index: 999;
     }
     
-    .mobile-menu-btn {
-        display: none;
+    /* Quando la classe 'active' è aggiunta via JS, mostra il menù */
+    nav.active {
+        display: block;
     }
 
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .info-container {
+    /* Imposta i link in colonna */
+    nav ul {
         flex-direction: column;
+        width: 100%;
+    }
+    
+    nav ul li {
+        margin: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 15px 20px;
+        color: var(--white); /* Colore bianco per contrasto con sfondo blu */
+        text-align: center;
+        width: 100%;
+    }
+
+    nav ul li a:hover {
+        background-color: var(--ocean-blue);
+        color: var(--sand);
     }
 }
