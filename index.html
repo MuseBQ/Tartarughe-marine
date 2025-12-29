@@ -4,249 +4,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caretta Caretta - Home</title>
-    <link href="common.css" rel="stylesheet">
-    <link href="index.css" rel="stylesheet">
+    <title>Caretta Caretta | Regina dei Mari</title>
+    <link rel="icon" type="image/png" href="assets/Loghi/Logo.png">
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Garamond:ital,wght@0,400;0,700;1,400&family=Waterlily&display=swap"
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"
         rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        /* CSS per la Scala di Rischio Semplificata */
-        .conservation-scale {
-            list-style: none;
-            padding: 0;
-            width: 350px;
-            margin: 30px auto;
-            border-left: 5px solid var(--deep-blue);
-            /* La linea della scala */
-        }
-
-        .scale-item {
-            padding: 10px 15px;
-            margin: 10px 0;
-            position: relative;
-            color: var(--dark-text);
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            font-family: Garamond, serif;
-            /* Assicura Garamond per il testo interno */
-        }
-
-        /* Il punto sulla linea (aggiornato per coerenza) */
-        .scale-item::before {
-            content: '';
-            position: absolute;
-            left: -10px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: var(--deep-blue);
-            border: 2px solid white;
-        }
-
-        /* Colori e stili per i livelli di rischio (dal più alto al più basso) */
-        .EX {
-            background-color: #495057;
-            color: white;
-        }
-
-        /* Estinto (Grigio Scuro/Nero) */
-        .CR {
-            background-color: #dc3545;
-            color: white;
-        }
-
-        /* Critico (Rosso) */
-        .EN {
-            background-color: #fd7e14;
-        }
-
-        /* In Pericolo (Arancio Scuro) */
-
-        /* Evidenziazione per la Caretta caretta */
-        .VU {
-            background-color: var(--sand);
-            /* Giallo */
-            font-weight: bold;
-            box-shadow: 0 0 10px rgba(255, 193, 7, 0.7);
-            border: 2px solid var(--dark-text);
-        }
-
-        .VU::before {
-            background-color: var(--dark-text);
-            border: 3px solid var(--sand);
-            width: 12px;
-            height: 12px;
-        }
-
-        .NT {
-            background-color: #17a2b8;
-            color: white;
-        }
-
-        /* Prossimo alla Minaccia (Azzurro) */
-        .LC {
-            background-color: #28a745;
-            color: white;
-        }
-
-        /* Rischio Minimo (Verde) */
-
-        /* Stili per la sezione Curiosità */
-        .curiosity-card i {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: var(--sand);
-        }
-    </style>
 </head>
 
 <body>
-    <header>
-        <div class="header-logo-container">
-            <div class="nav-container">
-                <div class="logo">
-                    <img src="assets/icone/icona tartaruga lineart 3 (1).svg" alt="logo">
-                </div>
-                <div class="site-title">
-                    <h2 class="section-title">L'<span>Urlo</span> di Caretta</h2>
-                </div>
-            </div>
 
-            <button class="menu-toggle" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
+    <nav>
+        <div class="logo">
+            <img src="assets/Loghi/logo-design.png" alt="Logo Caretta" width="100" height="70">
+            <h1>Regina dei <span>Mari</span></h1>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#biologia">Biologia</a></li>
+            <li><a href="#minacce">Minacce</a></li>
+            <li><a href="#aiuto">Come Aiutare</a></li>
+        </ul>
+        <div class="menu">
+        <button class="button-menu" onclick="toggleMenu()">
+            <img src="assets/Loghi/Logo-lineart.png" alt="Logo Lineart Caretta" width="40" height="30">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        </div>
+    </div>
+    </nav>
 
-            <nav>
-                <ul class="pages-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="info.html">Storia & Evoluzione</a></li>
-                </ul>
-                <ul class="sections">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">Conservazione</a></li>
-                    <li><a href="#gallery">Galleria</a></li>
-                    <li><a href="#curiosities">Curiosità</a></li>
-                    <li><a href="#contact">Contatti</a></li>
-                </ul>
-            </nav>
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Caretta Caretta</h1>
+            <p>Proteggiamo la tartaruga marina più comune del Mediterraneo.</p>
+            <a href="#biologia" class="btn">Scopri di più</a>
         </div>
     </header>
 
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Il Mondo della nostra Amica Marina</h1>
-            <p>Immergiti per scoprire la specie di tartaruga marina più diffusa nel Mar Mediterraneo, un'antica
-                navigatrice oggi minacciata dall'inquinamento, dalla riduzione degli habitat di nidificazione e dagli
-                impatti della pesca accidentale.</p>
-            <a href="#about" class="btn"><i class="fas fa-arrow-down"></i> Scopri</a>
-        </div>
-    </section>
-
-    <section id="about">
-        <h2 class="section-title">Stato di Conservazione della Specie (IUCN)</h2>
-        <p style="text-align: center; margin-bottom: 2rem;">Attualmente la <em>Caretta caretta</em> è classificata come
-            Vulnerabile (VU) a livello globale.</p>
-
-        <ul class="conservation-scale">
-            <li class="scale-item EX">Estinto (EX)</li>
-            <li class="scale-item CR">In Pericolo Critico (CR)</li>
-            <li class="scale-item EN">In Pericolo (EN)</li>
-
-            <li class="scale-item VU">Vulnerabile (VU)</li>
-
-            <li class="scale-item NT">Prossimo alla Minaccia (NT)</li>
-            <li class="scale-item LC">Rischio Minimo (LC)</li>
-        </ul>
-
-        <div class="info-container">
-            <div class="info-text">
-                <h2 class="section-title">Un Viaggiatore a Rischio nel Mediterraneo</h2>
-                <p>La <em>Caretta caretta</em> è una specie pelagica, abituata a lunghe migrazioni in mare aperto. Le
-                    femmine ritornano a riva solo per deporre le uova, un viaggio che ha compiuto per milioni di anni.
-                </p>
-                <p>Oggi, uno dei pericoli più subdoli è rappresentato dal Cambiamento Climatico. La temperatura
-                    d'incubazione della sabbia è un fattore cruciale che determina il sesso dei nascituri
-                    (Temperature-Dependent Sex Determination).</p>
-                <p>L'innalzamento delle temperature medie può causare una forte sproporzione nella popolazione:
-                    aumento delle femmine e drastica riduzione dei maschi (fino a rapporti di 99:1), minacciando la
-                    capacità riproduttiva a lungo termine di intere popolazioni.</p>
-                <p>Tuttavia, il successo riproduttivo in siti di nidificazione inusuali, molto più a nord dei classici
-                    areali, offre una debole speranza di compensazione per questo andamento, dimostrando una potenziale
-                    capacità di adattamento.</p>
-
-                <h2 class="section-title">La Risposta della Scienza</h2>
-                <p>La specie è inserita nell'Appendice I della Convention on International Trade of Endangered Species
-                    (CITES), che vieta il commercio internazionale degli esemplari.</p>
+    <section id="biologia" class="container">
+        <h2>La Biologia</h2>
+        <img src="assets/icone/tartaruga lineart 2.png" alt="Tartaruga Caretta Caretta" class="biologia-img">
+        <p>La Caretta Caretta è una tartaruga marina di medie dimensioni, riconoscibile per il suo carapace
+            robusto e
+            di colore marrone-rossiccio. Si nutre principalmente di meduse, crostacei e molluschi, contribuendo
+            all'equilibrio
+            degli ecosistemi marini.</p>
+        <div class="grid">
+            <div class="card">
+                <img src="assets/Loghi/Logo-sfondo-bianco.png" alt="Icona Dimensioni" class="card-icon" width="90" height="auto">
+                <h3>Dimensioni</h3>
+                <p>Possono raggiungere i 110 cm di lunghezza del guscio e pesare fino a 180 kg.</p>
             </div>
-            <div class="info-image">
-                <img src="WebDesign/tartarughe-marine.jpg" loading="lazy" alt="Tartaruga Caretta Caretta">
+            <div class="card">
+                <img src="assets/icone/icona-caretta-adulta.png" alt="Icona Longevità" class="card-icon" width="90" height="auto">
+                <h3>Longevità</h3>
+                <p>Vivono mediamente tra i 30 e i 50 anni, ma alcuni esemplari superano gli 80.</p>
+            </div>
+            <div class="card">
+                <img src="assets/Loghi/Logo-sfondo-nero.png" alt="Icona Habitat" class="card-icon" width="90" height="auto">
+                <h3>Habitat</h3>
+                <p>Frequentano acque temperate e tropicali, nidificando spesso sulle coste italiane.</p>
             </div>
         </div>
     </section>
 
-    <section id="gallery">
-        <h2 class="section-title">Galleria Fotografica: Vita Marina</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                    loading="lazy" alt="Tartaruga marina adulta che nuota in mare aperto">
-                <div class="gallery-caption">L'Adulto: Esploratore degli abissi</div>
-            </div>
-            <div class="gallery-item">
-                <img src="/assets/caretta schiusa 3.jpg" loading="lazy"
-                    alt="Piccole tartarughe che corrono verso il mare">
-                <div class="gallery-caption">Le Neonate: La corsa per la vita</div>
-            </div>
-            <div class="gallery-item">
-                <img src="/assets/caretta schiusa 2.jpg" loading="lazy" alt="Piccola tartaruga appena uscita dal nido">
-                <div class="gallery-caption">Il Primo Viaggio: L'uscita dal nido</div>
-            </div>
-            <div class="gallery-item">
-                <img src="/assets/caretta schiusa.jpg" loading="lazy" alt="Tartaruga in superficie per respirare">
-                <div class="gallery-caption">Respirando la Superficie: Necessità vitale</div>
-            </div>
+    <section class="fact-section">
+        <div class="container">
+            <h2>Lo sapevi che?</h2>
+            <p id="fact-text">Clicca il bottone per scoprire una curiosità sulle tartarughe!</p>
+            <button onclick="getNewFact()" class="btn-alt">Nuova Curiosità</button>
         </div>
     </section>
 
-    <section id="curiosities">
-        <h2 class="section-title">Curiosità Scientifiche</h2>
-        <div class="curiosities-container">
-            <div class="curiosity-card">
-                <h3><i class="fas fa-compass"></i> Navigazione Magnetica</h3>
-                <p>Le <em>Caretta caretta</em> possiedono una capacità sensoriale straordinaria: usano il campo
-                    magnetico terrestre come una vera e propria bussola interna per orientarsi. Questo permette loro
-                    di navigare per migliaia di chilometri e ritrovare la spiaggia natale.</p>
-            </div>
-            <div class="curiosity-card">
-                <h3><i class="fas fa-route"></i> Viaggiatrici Oceaniche</h3>
-                <p>Come vere atlete oceaniche, queste tartarughe possono percorrere distanze incredibili. Alcuni studi
-                    hanno registrato esemplari che hanno coperto oltre 12.000 km in un solo anno tra le aree di
-                    foraggiamento e i siti di riproduzione.</p>
-            </div>
-            <div class="curiosity-card">
-                <h3><i class="fas fa-map-marker-alt"></i> Fedeltà alla Spiaggia</h3>
-                <p>Dopo decenni passati in mare, le femmine tornano con una precisione quasi infallibile alla stessa
-                    spiaggia dove sono nate (o nelle immediate vicinanze) per deporre le loro uova. Questo fenomeno è
-                    noto come filopatria nativa.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contact">
-        <div class="footer-content">
-            <h2>Unisciti</h2>
-            <p>Il lavoro dei volontari è fondamentale per il monitoraggio dei nidi, la protezione delle uova e la
-                cura degli esemplari feriti. Ogni contributo aiuta a garantire un futuro a queste creature millenarie.
-            </p>
-            <p style="margin-top: 20px;">&copy; 2025 Progetto di Divulgazione Scientifica</p>
-        </div>
+    <footer>
+        <p>&copy; 2025 Progetto Salvaguardia Caretta Caretta - Creato con ❤️ per il mare</p>
     </footer>
 
     <script src="script.js"></script>
