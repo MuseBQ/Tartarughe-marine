@@ -1,90 +1,448 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Scopri la Caretta Caretta, la tartaruga marina più comune del Mediterraneo. Informazioni, articoli scientifici e come proteggerla.">
+    <meta name="keywords" content="Caretta Caretta, tartaruga marina, Mediterraneo, conservazione, animali marini">
     <title>Caretta Caretta | Regina dei Mari</title>
+    
     <link rel="icon" type="image/png" href="assets/Loghi/Logo.png">
-
+    <link rel="preload" href="style.css" as="style">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="marquee.css">
+    <link rel="stylesheet" href="reveal.css">
+    
+    <!-- Font preload -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
-
-    <nav>
-        <div class="logo">
-            <img src="assets/Loghi/logo-design.png" alt="Logo Caretta" width="100" height="70">
-            <h1>Regina dei <span>Mari</span></h1>
-        </div>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#biologia">Biologia</a></li>
-            <li><a href="#minacce">Minacce</a></li>
-            <li><a href="#aiuto">Come Aiutare</a></li>
-        </ul>
-        <div class="menu">
-        <button class="button-menu" onclick="toggleMenu()">
-            <img src="assets/Loghi/Logo-lineart.png" alt="Logo Lineart Caretta" width="40" height="30">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+    <!-- Marquee Announcement -->
+    <div class="announcement-bar">
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <span>🔄</span>
+                <span class="gradient-text">Tassonomia: Classe Reptilia | Ordine Testudines | Famiglia Cheloniidae | Specie Caretta Caretta</span>
+                <span>🔄</span>
+            </div>
         </div>
     </div>
-    </nav>
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Caretta Caretta</h1>
-            <p>Proteggiamo la tartaruga marina più comune del Mediterraneo.</p>
-            <a href="#biologia" class="btn">Scopri di più</a>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="nav-brand">
+                <a href="#home" class="logo-link" aria-label="Torna alla home">
+                    <img src="assets/Loghi/Logo.png" alt="Logo Caretta Caretta" class="logo" width="60" height="60">
+                    <div class="logo-text">
+                        <span class="logo-title">Caretta Caretta</span>
+                        <span class="logo-subtitle">Regina dei Mari</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <ul class="nav-menu" role="navigation" aria-label="Navigazione principale">
+                <li class="nav-item"><a href="#home" class="nav-link active" aria-current="page">Home</a></li>
+                <li class="nav-item"><a href="#biologia" class="nav-link">Biologia</a></li>
+                <li class="nav-item"><a href="#articoli" class="nav-link">Articoli</a></li>
+                <li class="nav-item"><a href="#scientifiche" class="nav-link">Scienza</a></li>
+                <li class="nav-item"><a href="#conservazione" class="nav-link">Conservazione</a></li>
+                <li class="nav-item"><a href="#contatti" class="nav-link">Contatti</a></li>
+            </ul>
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-toggle" aria-label="Apri/chiudi menu" aria-expanded="false" aria-controls="mobile-menu">
+                <span class="menu-icon"></span>
+                <span class="menu-icon"></span>
+                <span class="menu-icon"></span>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+            <ul class="mobile-nav" role="navigation" aria-label="Navigazione mobile">
+                <li><a href="#home" class="mobile-nav-link" aria-current="page">Home</a></li>
+                <li><a href="#biologia" class="mobile-nav-link">Biologia</a></li>
+                <li><a href="#articoli" class="mobile-nav-link">Articoli</a></li>
+                <li><a href="#scientifiche" class="mobile-nav-link">Scienza</a></li>
+                <li><a href="#conservazione" class="mobile-nav-link">Conservazione</a></li>
+                <li><a href="#contatti" class="mobile-nav-link">Contatti</a></li>
+            </ul>
         </div>
     </header>
 
-    <section id="biologia" class="container">
-        <h2>La Biologia</h2>
-        <img src="assets/icone/tartaruga lineart 2.png" alt="Tartaruga Caretta Caretta" class="biologia-img">
-        <p>La Caretta Caretta è una tartaruga marina di medie dimensioni, riconoscibile per il suo carapace
-            robusto e
-            di colore marrone-rossiccio. Si nutre principalmente di meduse, crostacei e molluschi, contribuendo
-            all'equilibrio
-            degli ecosistemi marini.</p>
-        <div class="grid">
-            <div class="card">
-                <img src="assets/Loghi/Logo-sfondo-bianco.png" alt="Icona Dimensioni" class="card-icon" width="90" height="auto">
-                <h3>Dimensioni</h3>
-                <p>Possono raggiungere i 110 cm di lunghezza del guscio e pesare fino a 180 kg.</p>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section" aria-labelledby="hero-title">
+        <div class="hero-background"></div>
+        <div class="container hero-content">
+            <div class="hero-text" data-aos="fade-up">
+                <h1 id="hero-title" class="hero-title gradient-text">
+                    C.<span class="highlight">Caretta</span>
+                </h1>
+                <p class="hero-subtitle">
+                    La tartaruga marina più comune del Mediterraneo.<br>
+                    Scopri, impara e aiuta a proteggere questa specie in pericolo.
+                </p>
+                <div class="hero-actions">
+                    <a href="#biologia" class="btn btn-primary" aria-label="Scopri di più sulla Caretta Caretta">
+                        <span>Scopri di più</span>
+                        <i class="fas fa-arrow-down" aria-hidden="true"></i>
+                    </a>
+                    <a href="#conservazione" class="btn btn-secondary" aria-label="Scopri come aiutare">
+                        <span>Come aiutare</span>
+                        <i class="fas fa-hands-helping" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
-            <div class="card">
-                <img src="assets/icone/icona-caretta-adulta.png" alt="Icona Longevità" class="card-icon" width="90" height="auto">
-                <h3>Longevità</h3>
-                <p>Vivono mediamente tra i 30 e i 50 anni, ma alcuni esemplari superano gli 80.</p>
-            </div>
-            <div class="card">
-                <img src="assets/Loghi/Logo-sfondo-nero.png" alt="Icona Habitat" class="card-icon" width="90" height="auto">
-                <h3>Habitat</h3>
-                <p>Frequentano acque temperate e tropicali, nidificando spesso sulle coste italiane.</p>
+            
+            <div class="hero-visual" data-aos="fade-left">
+                <div class="turtle-animation">
+                    <img src="assets/icone/icona-caretta-adulta.png" alt="Illustrazione Caretta Caretta" class="turtle-image">
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="fact-section">
+    <!-- Quick Stats -->
+    <section class="stats-section" aria-labelledby="stats-title">
         <div class="container">
-            <h2>Lo sapevi che?</h2>
-            <p id="fact-text">Clicca il bottone per scoprire una curiosità sulle tartarughe!</p>
-            <button onclick="getNewFact()" class="btn-alt">Nuova Curiosità</button>
+            <h2 id="stats-title" class="section-title">In numeri</h2>
+            <div class="stats-grid">
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-icon">
+                        <i class="fas fa-ruler-combined" aria-hidden="true"></i>
+                    </div>
+                    <div class="stat-number">110<span>cm</span></div>
+                    <p class="stat-label">Lunghezza massima</p>
+                </div>
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-icon">
+                        <i class="fas fa-birthday-cake" aria-hidden="true"></i>
+                    </div>
+                    <div class="stat-number">67<span>anni</span></div>
+                    <p class="stat-label">Longevità media</p>
+                </div>
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-icon">
+                        <i class="fas fa-egg" aria-hidden="true"></i>
+                    </div>
+                    <div class="stat-number">110<span>uova</span></div>
+                    <p class="stat-label">Per nidificata</p>
+                </div>
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-icon">
+                        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                    </div>
+                    <div class="stat-number">1<span>/1000</span></div>
+                    <p class="stat-label">Sopravvivenza</p>
+                </div>
+            </div>
+            <div class="image-card">
+                <img src="assets/foto/caretta-misurazione-ipa-agency.jpg" alt="Misurazione di un'esemplare adulto">
+                <div class="image-caption">Misurazione di un'esemplare adulto | Crediti Ipa Agency</div>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2025 Progetto Salvaguardia Caretta Caretta - Creato con ❤️ per il mare</p>
+    <!-- Biologia Section -->
+    <section id="biologia" class="section biology-section" aria-labelledby="biologia-title">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="biologia-title" class="section-title">Biologia & Habitat</h2>
+                <p class="section-subtitle">Conosci la regina dei nostri mari</p>
+            </div>
+            
+            <div class="biology-content">
+                <div class="biology-text" data-aos="fade-right">
+                    <h3>Caratteristiche fisiche</h3>
+                    <p>La <strong>Caretta caretta</strong> è riconoscibile per il suo carapace robusto a forma di cuore, di colore marrone-rossastro. La testa è grande rispetto al corpo, con mascelle potenti adatte a frantumare i gusci dei crostacei.</p>
+                    
+                    <h3>Distribuzione</h3>
+                    <p>Frequenta mari temperati, subtropicali e tropicali di tutto il mondo. Nel Mediterraneo, l'Italia è uno dei principali siti di nidificazione, con oltre 80 nidi segnalati annualmente lungo le coste siciliane, calabresi e pugliesi.</p>
+                    
+                    <h3>Alimentazione</h3>
+                    <p>Principalmente carnivora, si nutre di meduse, crostacei, molluschi e pesci. I piccoli consumano plancton e organismi galleggianti durante le loro lunghe migrazioni oceaniche.</p>
+                    
+                    <div class="cta-box">
+                        <p><strong>Vuoi saperne di più?</strong> Scopri tutte le curiosità nelle sezioni dedicate!</p>
+                        <a href="#articoli" class="btn btn-outline">Esplora gli articoli</a>
+                    </div>
+                </div>
+                
+                <div class="biology-visual" data-aos="fade-left">
+                    <div class="image-card">
+                        <img src="assets/foto/Tartaruga-crediti-pixabay.jpg" alt="Caretta Caretta adulta">
+                        <div class="image-caption">Caretta Caretta adulta che nuota in profondità | Crediti Pixabay</div>
+                    </div>
+                    <div class="habitat-info">
+                        <h4><i class="fas fa-map-marker-alt"></i> Habitat preferito</h4>
+                        <ul>
+                            <li><strong>Giovanili:</strong> Zone pelagiche, correnti oceaniche</li>
+                            <li><strong>Adulti:</strong> Acque costiere (profondità < 50m)</li>
+                            <li><strong>Nidificazione:</strong> Spiagge sabbiose isolate</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articoli Section -->
+    <section id="articoli" class="section articles-section" aria-labelledby="articoli-title">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="articoli-title" class="section-title">Articoli & Approfondimenti</h2>
+                <p class="section-subtitle">Informazione scientifica e divulgazione</p>
+            </div>
+            
+            <div class="articles-tabs" role="tablist" aria-label="Tipi di articoli">
+                <button class="tab-button active" role="tab" aria-selected="true" data-tab="focus">Focus</button>
+                <button class="tab-button" role="tab" aria-selected="false" data-tab="junior">Focus Junior</button>
+                <button class="tab-button" role="tab" aria-selected="false" data-tab="scienza">Scienza</button>
+            </div>
+            
+            <!-- Focus Articles -->
+            <div class="tab-content active" id="tab-focus" role="tabpanel" aria-labelledby="focus-tab">
+                <article class="article-card" data-aos="fade-up">
+                    <div class="article-header">
+                        <span class="article-category">Biologia</span>
+                        <time datetime="2019-08-24">24 Agosto 2019</time>
+                    </div>
+                    <h3 class="article-title">Le tartarughe non nascono di giorno</h3>
+                    <p class="article-author">di <strong>Federica Campanelli</strong></p>
+                    <p class="article-excerpt">Grande sorpresa per chi, il 18 agosto, si trovava sulla spiaggia Eloro-Pizzuta di Noto (Siracusa). I bagnanti hanno assistito a un fenomeno davvero inusuale...</p>
+                    <button class="btn-read-more" data-article="focus1">
+                        <span>Leggi tutto</span>
+                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </button>
+                </article>
+                
+                <!-- Article Modal will be populated by JavaScript -->
+            </div>
+            
+            <!-- Focus Junior Articles -->
+            <div class="tab-content" id="tab-junior" role="tabpanel" aria-labelledby="junior-tab">
+                <article class="article-card" data-aos="fade-up">
+                    <div class="article-header">
+                        <span class="article-category">Divulgazione</span>
+                        <time datetime="2023-07-02">2 Luglio 2023</time>
+                    </div>
+                    <h3 class="article-title">Conosciamo l'avventurosa tartaruga di mare</h3>
+                    <p class="article-author">di <strong>Dunia Rahwan</strong></p>
+                    <p class="article-excerpt">Capace di lunghe migrazioni, la tartaruga di mare è un rettile molto resistente che per quanto si spinga lontano torna sempre al luogo dove è nata...</p>
+                    <button class="btn-read-more" data-article="junior1">
+                        <span>Leggi tutto</span>
+                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </button>
+                </article>
+            </div>
+            
+            <!-- Scientific Articles -->
+            <div class="tab-content" id="tab-scienza" role="tabpanel" aria-labelledby="scienza-tab">
+                <article class="article-card scientific" data-aos="fade-up">
+                    <div class="article-header">
+                        <span class="article-category">Ricerca</span>
+                        <time datetime="2015-05-30">30 Maggio 2015</time>
+                    </div>
+                    <h3 class="article-title">Habitat e distribuzione nel Mediterraneo</h3>
+                    <p class="article-author">da <strong>Casale P & Margaritoulis D (2010)</strong></p>
+                    <p class="article-excerpt">La specie frequenta sia ambienti costieri sia pelagici; è epipelagica nella fase giovanile, mentre in fase adulta si nutre in ambiente neritico...</p>
+                    <button class="btn-read-more" data-article="scienza1">
+                        <span>Leggi studio</span>
+                        <i class="fas fa-book-open" aria-hidden="true"></i>
+                    </button>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conservation Section -->
+    <section id="conservazione" class="section conservation-section" aria-labelledby="conservazione-title">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="conservazione-title" class="section-title">Minacce & Conservazione</h2>
+                <p class="section-subtitle">Proteggiamo insieme la Caretta caretta</p>
+            </div>
+            
+            <div class="threats-grid">
+                <div class="threat-card threat-high" data-aos="fade-up">
+                    <div class="threat-icon">
+                        <i class="fas fa-fish" aria-hidden="true"></i>
+                    </div>
+                    <h3>Pesca accidentale</h3>
+                    <p>Oltre 200.000 catture accidentali annuali con reti e palangari</p>
+                </div>
+                
+                <div class="threat-card threat-medium" data-aos="fade-up" data-aos-delay="100">
+                    <div class="threat-icon">
+                        <i class="fas fa-trash" aria-hidden="true"></i>
+                    </div>
+                    <h3>Inquinamento plastico</h3>
+                    <p>Ingestione di sacchetti di plastica scambiati per meduse</p>
+                </div>
+                
+                <div class="threat-card threat-high" data-aos="fade-up" data-aos-delay="200">
+                    <div class="threat-icon">
+                        <i class="fas fa-umbrella-beach" aria-hidden="true"></i>
+                    </div>
+                    <h3>Disturbo costiero</h3>
+                    <p>Turismo intensivo e illuminazione artificiale sulle spiagge di nidificazione</p>
+                </div>
+                
+                <div class="threat-card threat-low" data-aos="fade-up" data-aos-delay="300">
+                    <div class="threat-icon">
+                        <i class="fas fa-ship" aria-hidden="true"></i>
+                    </div>
+                    <h3>Traffico navale</h3>
+                    <p>Collisioni con imbarcazioni durante le immersioni in superficie</p>
+                </div>
+            </div>
+            
+            <div class="conservation-actions">
+                <div class="action-card" data-aos="fade-right">
+                    <h3><i class="fas fa-hands-helping"></i> Cosa puoi fare</h3>
+                    <ul class="action-list">
+                        <li><strong>Segnala nidi:</strong> Contatta il WWF o la Capitaneria di Porto</li>
+                        <li><strong>Riduci plastica:</strong> Evita prodotti monouso e partecipa alle pulizie delle spiagge</li>
+                        <li><strong>Scegli pesce sostenibile:</strong> Prediligi pescato con metodi a basso impatto</li>
+                        <li><strong>Diffondi consapevolezza:</strong> Condividi informazioni con amici e familiari</li>
+                    </ul>
+                </div>
+                
+                <div class="action-card" data-aos="fade-left">
+                    <h3><i class="fas fa-shield-alt"></i> Progetti di tutela</h3>
+                    <div class="project-highlight">
+                        <h4>Life Euroturtles</h4>
+                        <p>Progetto UE per la conservazione delle tartarughe marine in 6 paesi mediterranei</p>
+                        <a href="https://www.euroturtles.eu" target="_blank" rel="noopener" class="project-link">
+                            Visita il sito <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    <div class="project-highlight">
+                        <h4>WWF Tartarughe Marine</h4>
+                        <p>Monitoraggio nidi, recupero esemplari feriti e sensibilizzazione in Italia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fun Facts Section -->
+    <section class="facts-section" aria-labelledby="facts-title">
+        <div class="container">
+            <div class="facts-container" data-aos="zoom-in">
+                <div class="facts-header">
+                    <h2 id="facts-title" class="section-title">
+                        <i class="fas fa-lightbulb" aria-hidden="true"></i>
+                        Lo sapevi che?
+                    </h2>
+                    <p class="facts-subtitle">Curiosità sulla Caretta caretta</p>
+                </div>
+                
+                <div class="facts-content">
+                    <div class="fact-display">
+                        <div class="fact-icon">
+                            <i class="fas fa-water" aria-hidden="true"></i>
+                        </div>
+                        <p id="fact-text" class="fact-text">
+                            Le Caretta caretta possono percorrere fino a 12.000 km in un anno durante le migrazioni!
+                        </p>
+                    </div>
+                    
+                    <div class="facts-controls">
+                        <button onclick="getNewFact()" class="btn btn-primary" aria-label="Scopri una nuova curiosità">
+                            <i class="fas fa-sync-alt" aria-hidden="true"></i>
+                            Nuova curiosità
+                        </button>
+                        <div class="facts-counter">
+                            <span id="fact-index">1</span> / <span id="fact-total">15</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="facts-footer">
+                    <p><i class="fas fa-info-circle" aria-hidden="true"></i> Clicca il bottone per scoprire altre incredibili curiosità!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <footer id="contatti" class="footer" aria-labelledby="footer-title">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section" data-aos="fade-up">
+                    <div class="footer-brand">
+                        <img src="assets/Loghi/Logo-lineart.png" alt="Logo Caretta Caretta" class="footer-logo">
+                        <div>
+                            <h3 id="footer-title" class="footer-title">C. Caretta</h3>
+                            <p class="footer-subtitle">Regina dei Mari</p>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        Portale informativo dedicato alla conoscenza e conservazione della tartaruga marina Caretta caretta.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Visita la nostra pagina GitHub">
+                            <i class="fab fa-github" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section" data-aos="fade-up" data-aos-delay="100">
+                    <h4>Link rapidi</h4>
+                    <ul class="footer-links">
+                        <li><a href="#biologia">Biologia</a></li>
+                        <li><a href="#articoli">Articoli</a></li>
+                        <li><a href="#scientifiche">Pubblicazioni</a></li>
+                        <li><a href="#conservazione">Conservazione</a></li>
+                        <li><a href="#home">Torna su</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">
+                    &copy; 2026 Caretta Caretta | Regina dei Mari
+                    <span class="separator">•</span>
+                    Progetto di Web Design
+                    <span class="separator">•</span>
+                    Creato da Mattia Bogdan Quarta & Giulio Tornesello
+                </p>
+                <p class="attribution">
+                    Crediti per le immagini a Shutterstock, Ipa Agency e Pixabay. Icone da Font Awesome.
+                </p>
+            </div>
+        </div>
     </footer>
 
-    <script src="script.js"></script>
-</body>
+    <!-- Modal for Articles -->
+    <div class="modal" id="articleModal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Chiudi finestra">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body" id="modal-body">
+                <!-- Content loaded by JavaScript -->
+            </div>
+        </div>
+        <div class="modal-overlay"></div>
+    </div>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" aria-label="Torna all'inizio della pagina">
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="script.js" defer></script>
+    <script src="facts.js" defer></script>
+    <script src="animations.js" defer></script>
+    <script src="reveal.js"></script>
+</body>
 </html>
