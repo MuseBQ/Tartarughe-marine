@@ -1,7 +1,14 @@
 /* ==========================================================================
    CSS Reset & Base Styles
    ========================================================================== */
-* {
+    @font-face {
+    font-family: 'Stagera Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Stagera Regular'), url('fonts/Stagera-PKBRg.woff') format('woff');
+    }
+
+   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -36,7 +43,7 @@
     --spacing-xl: 5rem;
     
     /* Typography */
-    --font-heading: 'EB Garamond', serif;
+    --font-heading: 'Stagera Regular', sans-serif;
     --font-body: 'EB Garamond', serif;
     --font-size-xs: 0.875rem;
     --font-size-sm: 1rem;
