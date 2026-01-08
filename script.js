@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initSmoothScroll();
     initBackToTop();
     initHeaderScroll();
-    initTabSwitcher();
     initModal();
     initScrollAnimations();
     initArticleTabs();
@@ -14,14 +13,16 @@ document.addEventListener('DOMContentLoaded', function() {
     loadArticleContent();
     
     // Set current year in footer
-    document.querySelector('.copyright').innerHTML = 
-        document.querySelector('.copyright').innerHTML.replace('2026', new Date().getFullYear());
+    const copyright = document.querySelector('.copyright');
+    if (copyright) {
+        copyright.innerHTML = copyright.innerHTML.replace('2026', new Date().getFullYear());
+    }
 });
 
 // Mobile Menu Toggle
 function initMobileMenu() {
     const menuToggle = document.querySelector('.mobile-menu-toggle');
-    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileMenu = document.getElementById('mobile-menu');
     const body = document.body;
     
     if (!menuToggle || !mobileMenu) return;
@@ -69,15 +70,15 @@ function initMobileMenu() {
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
             
             const targetElement = document.querySelector(targetId);
             if (!targetElement) return;
             
-            const headerHeight = document.querySelector('.header').offsetHeight;
+            e.preventDefault();
+            
+            const headerHeight = document.querySelector('.header')?.offsetHeight || 100;
             const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
             
             window.scrollTo({
@@ -144,51 +145,21 @@ function initHeaderScroll() {
     });
 }
 
-// Tab Switcher for Articles
-function initTabSwitcher() {
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
-    if (!tabButtons.length || !tabContents.length) return;
-    
-    tabButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const tabId = this.getAttribute('data-tab');
-            
-            // Update button states
-            tabButtons.forEach(btn => {
-                btn.classList.remove('active');
-                btn.setAttribute('aria-selected', 'false');
-            });
-            this.classList.add('active');
-            this.setAttribute('aria-selected', 'true');
-            
-            // Update content visibility
-            tabContents.forEach(content => {
-                content.classList.remove('active');
-                content.setAttribute('aria-hidden', 'true');
-            });
-            
-            const activeContent = document.getElementById(`tab-${tabId}`);
-            if (activeContent) {
-                activeContent.classList.add('active');
-                activeContent.setAttribute('aria-hidden', 'false');
-            }
-        });
-    });
-}
-
 // Article Modal
 function initModal() {
     const modal = document.getElementById('articleModal');
+    if (!modal) return;
+    
     const modalClose = modal.querySelector('.modal-close');
     const modalOverlay = modal.querySelector('.modal-overlay');
     
     // Close modal handlers
     [modalClose, modalOverlay].forEach(element => {
-        element.addEventListener('click', function() {
-            closeModal();
-        });
+        if (element) {
+            element.addEventListener('click', function() {
+                closeModal();
+            });
+        }
     });
     
     // Close with Escape key
@@ -203,6 +174,8 @@ function openModal(articleContent) {
     const modal = document.getElementById('articleModal');
     const modalBody = document.getElementById('modal-body');
     
+    if (!modal || !modalBody) return;
+    
     modalBody.innerHTML = articleContent;
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
@@ -212,6 +185,8 @@ function openModal(articleContent) {
 function closeModal() {
     const modal = document.getElementById('articleModal');
     const modalBody = document.getElementById('modal-body');
+    
+    if (!modal || !modalBody) return;
     
     modal.classList.remove('active');
     modal.setAttribute('aria-hidden', 'true');
@@ -233,7 +208,7 @@ function initScrollAnimations() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.setAttribute('data-aos', 'visible');
+                entry.target.classList.add('aos-animate');
             }
         });
     }, observerOptions);
@@ -290,7 +265,7 @@ function getArticleContent(articleId) {
                 
                 <div class="article-footer">
                     <p><em>Fonte: Focus Magazine</em></p>
-                    <a href="#" class="btn btn-primary">Condividi articolo</a>
+                    <button class="btn btn-primary share-article">Condividi articolo</button>
                 </div>
             </article>
         `,
@@ -323,7 +298,7 @@ function getArticleContent(articleId) {
                 
                 <div class="article-footer">
                     <p><em>Fonte: Focus Junior</em></p>
-                    <a href="#" class="btn btn-primary">Condividi articolo</a>
+                    <button class="btn btn-primary share-article">Condividi articolo</button>
                 </div>
             </article>
         `,
@@ -361,7 +336,7 @@ function getArticleContent(articleId) {
                 
                 <div class="article-footer">
                     <p><em>Fonte: Mediterranean Marine Science, Vol. 11, No. 1</em></p>
-                    <a href="#" class="btn btn-primary">Scarica PDF dello studio</a>
+                    <button class="btn btn-primary share-article">Scarica PDF dello studio</button>
                 </div>
             </article>
         `
@@ -377,54 +352,28 @@ function initArticleTabs() {
     tabs.forEach(tab => {
         tab.addEventListener('click', function() {
             // Remove active class from all tabs
-            tabs.forEach(t => t.classList.remove('active'));
+            tabs.forEach(t => {
+                t.classList.remove('active');
+                t.setAttribute('aria-selected', 'false');
+            });
             
             // Add active class to clicked tab
             this.classList.add('active');
+            this.setAttribute('aria-selected', 'true');
             
             // Hide all tab contents
             document.querySelectorAll('.tab-content').forEach(content => {
                 content.classList.remove('active');
+                content.setAttribute('aria-hidden', 'true');
             });
             
             // Show corresponding content
             const tabId = this.getAttribute('data-tab');
-            document.getElementById(`tab-${tabId}`).classList.add('active');
-        });
-    });
-}
-
-// Performance Optimizations
-window.addEventListener('load', function() {
-    // Lazy load images
-    const images = document.querySelectorAll('img[loading="lazy"]');
-    
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.classList.add('loaded');
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
-        
-        images.forEach(img => imageObserver.observe(img));
-    }
-});
-
-// Error Handling
-window.addEventListener('error', function(e) {
-    console.error('Errore JavaScript:', e.error);
-});
-
-// Service Worker Registration (Progressive Web App)
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/sw.js').catch(function(error) {
-            console.log('Service Worker registration failed:', error);
+            const activeContent = document.getElementById(`tab-${tabId}`);
+            if (activeContent) {
+                activeContent.classList.add('active');
+                activeContent.setAttribute('aria-hidden', 'false');
+            }
         });
     });
 }

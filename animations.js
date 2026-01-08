@@ -14,7 +14,8 @@ class Animations {
         this.initProgressBars();
         this.initCounters();
         this.initHoverEffects();
-        this.initPageTransitions();
+        // Commentato perché interferisce con la navigazione normale
+        // this.initPageTransitions();
         this.initCursorEffects();
     }
     
@@ -78,6 +79,8 @@ class Animations {
             case 'flip':
                 element.style.transform = 'perspective(1000px) rotateY(90deg)';
                 break;
+            default:
+                element.style.transform = 'translateY(30px)';
         }
     }
     
@@ -190,7 +193,7 @@ class Animations {
     }
     
     animateCounter(counter) {
-        const target = parseInt(counter.getAttribute('data-target'));
+        const target = parseInt(counter.getAttribute('data-target')) || 0;
         const duration = parseInt(counter.getAttribute('data-duration')) || 2000;
         const increment = target / (duration / 16); // 60fps
         let current = 0;
@@ -250,6 +253,7 @@ class Animations {
                     height: ${size}px;
                     left: ${x}px;
                     top: ${y}px;
+                    pointer-events: none;
                 `;
                 
                 this.appendChild(ripple);
@@ -258,28 +262,6 @@ class Animations {
                     ripple.remove();
                 }, 600);
             });
-        });
-    }
-    
-    // Page transition effects
-    initPageTransitions() {
-        // Add transition class to all links
-        document.querySelectorAll('a').forEach(link => {
-            if (link.href && link.href.includes(window.location.origin)) {
-                link.addEventListener('click', (e) => {
-                    if (link.target === '_blank' || link.hasAttribute('download')) return;
-                    
-                    e.preventDefault();
-                    const href = link.href;
-                    
-                    // Add fade out effect
-                    document.body.classList.add('page-transition-out');
-                    
-                    setTimeout(() => {
-                        window.location.href = href;
-                    }, 300);
-                });
-            }
         });
     }
     
@@ -405,15 +387,6 @@ document.head.insertAdjacentHTML('beforeend', `
             width: 0;
         }
         
-        /* Page Transitions */
-        .page-transition-out {
-            animation: fadeOut 0.3s forwards;
-        }
-        
-        @keyframes fadeOut {
-            to { opacity: 0; }
-        }
-        
         /* Custom Cursor */
         .custom-cursor {
             position: fixed;
@@ -460,8 +433,8 @@ document.head.insertAdjacentHTML('beforeend', `
         .card::before, .article-card::before, .stat-card::before {
             content: '';
             position: absolute;
-            top: var(--mouse-y);
-            left: var(--mouse-x);
+            top: var(--mouse-y, 50%);
+            left: var(--mouse-x, 50%);
             width: 100px;
             height: 100px;
             background: radial-gradient(circle, rgba(0, 180, 216, 0.1) 0%, transparent 70%);

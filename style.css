@@ -1373,3 +1373,48 @@ a {
         page-break-inside: avoid;
     }
 }
+
+/* Fix per backdrop-filter su Safari */
+.header {
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.announcement-bar {
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.facts-container {
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.footer {
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* Migliora accessibilità per ridotto movimento */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .marquee-content {
+        animation: none !important;
+    }
+    
+    .turtle-image {
+        animation: none !important;
+    }
+}
+
+/* Fix per altezza minima su mobile */
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: auto;
+        padding-top: 100px;
+        padding-bottom: 50px;
+    }
+}
