@@ -17,7 +17,7 @@
     --accent-yellow: #ffd166;
     --accent-coral: #ef476f;
     
-    --dark-blue: #12192d;
+    --dark-blue: #020714;
     --medium-blue: #1e3a5f;
     --light-blue: #caf0f8;
     
@@ -78,7 +78,7 @@ body {
     color: var(--text-light);
     background: var(--bg-gradient);
     overflow-x: hidden;
-    min-height: 100vh;
+    min-height: 100vh;;
 }
 
 /* Typography */
@@ -139,8 +139,10 @@ a {
 }
 
 .section-title {
+    font-family: var(--font-heading);
     position: relative;
-    display: inline-block;
+    font-size: 50px;
+    padding-left: 10px;
     margin-bottom: var(--spacing-sm);
 }
 
@@ -148,9 +150,7 @@ a {
     content: '';
     position: absolute;
     bottom: -10px;
-    left: 0;
-    width: 60px;
-    height: 3px;
+    height: 8px;
     background: var(--accent-teal);
     border-radius: var(--radius-full);
 }
@@ -162,14 +162,14 @@ a {
 
 /* Announcement Bar */
 .announcement-bar {
-    background: rgba(10, 36, 114, 0.95);
+    background: #6a83ff4e;
     padding: var(--spacing-xs) 0;
-    position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(0, 180, 216, 0.2);
+    border-radius: 20px;
 }
 
 .marquee-container {
@@ -180,13 +180,12 @@ a {
 .marquee-content {
     display: inline-block;
     animation: marquee 30s linear infinite;
-    padding-left: 100%;
     font-size: var(--font-size-sm);
     font-weight: 500;
 }
 
 .marquee-content span {
-    margin: 0 var(--spacing-sm);
+    margin-right: var(--spacing-xl);
 }
 
 @keyframes marquee {
@@ -246,6 +245,7 @@ a {
 }
 
 .logo-text {
+    font-family: var(--font-heading);
     display: flex;
     flex-direction: column;
 }
@@ -416,7 +416,9 @@ a {
 }
 
 .hero-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-family: var(--font-body);
+    color: var(--accent-yellow);
+    font-size: clamp(4rem, 5vw, 4rem);
     margin-bottom: var(--spacing-md);
 }
 
@@ -436,6 +438,7 @@ a {
     display: flex;
     gap: var(--spacing-md);
     flex-wrap: wrap;
+    padding-bottom: 100px;
 }
 
 .btn {
@@ -452,20 +455,23 @@ a {
 }
 
 .btn-primary {
-    background: var(--accent-gradient);
-    color: white;
+    background: var(--accent-yellow);
+    color: #3553a5;
     box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+    left: 0px;
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 180, 216, 0.4);
+    
 }
 
 .btn-secondary {
     background: transparent;
     border-color: var(--accent-teal);
     color: var(--accent-teal);
+ bottom: 0px;
 }
 
 .btn-secondary:hover {
