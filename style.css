@@ -1,12 +1,6 @@
 /* ==========================================================================
    CSS Reset & Base Styles
    ========================================================================== */
-    @font-face {
-    font-family: 'Stagera Regular';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Stagera Regular'), url('fonts/Stagera-PKBRg.woff') format('woff');
-    }
 
    * {
     margin: 0;
@@ -43,8 +37,8 @@
     --spacing-xl: 5rem;
     
     /* Typography */
-    --font-heading: 'Stagera Regular', sans-serif;
-    --font-body: 'EB Garamond', serif;
+    --font-heading: 'Rubik', sans-serif;
+    --font-body: 'Montserrat', sans-serif;
     --font-size-xs: 0.875rem;
     --font-size-sm: 1rem;
     --font-size-md: 1.125rem;
@@ -500,6 +494,7 @@ a {
     position: relative;
     width: 400px;
     height: 400px;
+    filter: drop-shadow(0 30px 40px rgb(47, 147, 255));
 }
 
 .turtle-image {
@@ -507,7 +502,7 @@ a {
     height: 100%;
     object-fit: contain;
     animation: float 6s ease-in-out infinite;
-    filter: drop-shadow(0 10px 20px rgba(0, 180, 216, 0.3));
+    filter: drop-shadow(0 20px 30px rgb(167, 255, 190));
 }
 
 @keyframes float {
@@ -1374,22 +1369,6 @@ a {
     }
 }
 
-/* Fix per backdrop-filter su Safari */
-.header {
-    -webkit-backdrop-filter: blur(10px);
-}
-
-.announcement-bar {
-    -webkit-backdrop-filter: blur(10px);
-}
-
-.facts-container {
-    -webkit-backdrop-filter: blur(10px);
-}
-
-.footer {
-    -webkit-backdrop-filter: blur(10px);
-}
 
 /* Migliora accessibilità per ridotto movimento */
 @media (prefers-reduced-motion: reduce) {
