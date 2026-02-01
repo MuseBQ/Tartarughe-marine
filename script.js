@@ -1,72 +1,38 @@
-// Main JavaScript File
+// Main JavaScript - Unificato e semplificato
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all components
     initMobileMenu();
     initSmoothScroll();
-    initBackToTop();
-    initHeaderScroll();
+    initAnimations();
+    initFacts();
     initModal();
-    initScrollAnimations();
-    initArticleTabs();
-    
-    // Load initial content
-    loadArticleContent();
-    
-    // Set current year in footer
-    const copyright = document.querySelector('.copyright');
-    if (copyright) {
-        copyright.innerHTML = copyright.innerHTML.replace('2026', new Date().getFullYear());
-    }
+    initArticleNavigation();
 });
 
 // Mobile Menu Toggle
 function initMobileMenu() {
     const menuToggle = document.querySelector('.mobile-menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const body = document.body;
+    const navMenu = document.querySelector('.nav-menu');
     
-    if (!menuToggle || !mobileMenu) return;
+    if (!menuToggle || !navMenu) return;
     
     menuToggle.addEventListener('click', function() {
-        const isExpanded = this.getAttribute('aria-expanded') === 'true';
-        
-        // Toggle menu visibility
         this.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-        this.setAttribute('aria-expanded', !isExpanded);
-        mobileMenu.setAttribute('aria-hidden', isExpanded);
-        
-        // Toggle body scroll
-        body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-        
-        // Close menu when clicking on links
-        const menuLinks = mobileMenu.querySelectorAll('.mobile-nav-link');
-        menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', 'false');
-                mobileMenu.setAttribute('aria-hidden', 'true');
-                body.style.overflow = '';
-            });
-        });
+        navMenu.classList.toggle('active');
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
     });
     
-    // Close menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!mobileMenu.contains(event.target) && 
-            !menuToggle.contains(event.target) && 
-            mobileMenu.classList.contains('active')) {
+    // Close menu when clicking on links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
             menuToggle.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            menuToggle.setAttribute('aria-expanded', 'false');
-            mobileMenu.setAttribute('aria-hidden', 'true');
-            body.style.overflow = '';
-        }
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
     });
 }
 
-// Smooth Scrolling for Anchor Links
+// Smooth Scrolling
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -78,7 +44,7 @@ function initSmoothScroll() {
             
             e.preventDefault();
             
-            const headerHeight = document.querySelector('.header')?.offsetHeight || 100;
+            const headerHeight = document.querySelector('.header')?.offsetHeight || 80;
             const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
             
             window.scrollTo({
@@ -90,116 +56,39 @@ function initSmoothScroll() {
             updateActiveNavLink(targetId);
         });
     });
+    
+    // Update active link on scroll
+    window.addEventListener('scroll', debounce(updateActiveNavOnScroll, 100));
 }
 
-// Update Active Navigation Link
 function updateActiveNavLink(targetId) {
-    // Remove active class from all links
-    document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+    document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('active');
-        link.setAttribute('aria-current', null);
     });
     
-    // Add active class to current link
-    const currentLink = document.querySelector(`.nav-link[href="${targetId}"], .mobile-nav-link[href="${targetId}"]`);
+    const currentLink = document.querySelector(`.nav-link[href="${targetId}"]`);
     if (currentLink) {
         currentLink.classList.add('active');
-        currentLink.setAttribute('aria-current', 'page');
     }
 }
 
-// Back to Top Button
-function initBackToTop() {
-    const backToTopBtn = document.querySelector('.back-to-top');
+function updateActiveNavOnScroll() {
+    const sections = document.querySelectorAll('section[id]');
+    const scrollPosition = window.scrollY + 100;
     
-    if (!backToTopBtn) return;
-    
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-            backToTopBtn.classList.add('visible');
-        } else {
-            backToTopBtn.classList.remove('visible');
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            updateActiveNavLink(`#${sectionId}`);
         }
     });
-    
-    backToTopBtn.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-}
-
-// Header Scroll Effect
-function initHeaderScroll() {
-    const header = document.querySelector('.header');
-    
-    if (!header) return;
-    
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
-}
-
-// Article Modal
-function initModal() {
-    const modal = document.getElementById('articleModal');
-    if (!modal) return;
-    
-    const modalClose = modal.querySelector('.modal-close');
-    const modalOverlay = modal.querySelector('.modal-overlay');
-    
-    // Close modal handlers
-    [modalClose, modalOverlay].forEach(element => {
-        if (element) {
-            element.addEventListener('click', function() {
-                closeModal();
-            });
-        }
-    });
-    
-    // Close with Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-            closeModal();
-        }
-    });
-}
-
-function openModal(articleContent) {
-    const modal = document.getElementById('articleModal');
-    const modalBody = document.getElementById('modal-body');
-    
-    if (!modal || !modalBody) return;
-    
-    modalBody.innerHTML = articleContent;
-    modal.classList.add('active');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeModal() {
-    const modal = document.getElementById('articleModal');
-    const modalBody = document.getElementById('modal-body');
-    
-    if (!modal || !modalBody) return;
-    
-    modal.classList.remove('active');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    
-    // Clear content after animation
-    setTimeout(() => {
-        modalBody.innerHTML = '';
-    }, 300);
 }
 
 // Scroll Animations
-function initScrollAnimations() {
+function initAnimations() {
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -208,35 +97,127 @@ function initScrollAnimations() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('aos-animate');
+                entry.target.classList.add('animate');
             }
         });
     }, observerOptions);
     
-    // Observe all elements with data-aos attribute
-    document.querySelectorAll('[data-aos]').forEach(element => {
-        observer.observe(element);
+    // Observe cards and stats
+    document.querySelectorAll('.stat-card, .article-card, .threat-card').forEach(el => {
+        observer.observe(el);
     });
 }
 
-// Article Content Loading
-function loadArticleContent() {
-    const readMoreButtons = document.querySelectorAll('.btn-read-more');
+// Turtle Facts System
+function initFacts() {
+    const turtleFacts = [
+        "Le Caretta caretta possono percorrere fino a 12.000 km in un anno durante le migrazioni oceaniche!",
+        "Esistono da oltre 110 milioni di anni, sopravvivendo all'estinzione dei dinosauri. Fossili risalenti al Cretaceo confermano la loro antica esistenza.",
+        "Il sesso dei piccoli è determinato dalla temperatura della sabbia durante l'incubazione: sotto 29°C nascono maschi, sopra nascono femmine.",
+        "Possono immergersi fino a 200 metri di profondità e trattenere il respiro per 4-5 ore rallentando il metabolismo.",
+        "Ritornano con precisione millimetrica sulla spiaggia dove sono nate per deporre le uova, guidate dal campo magnetico terrestre.",
+        "Possiedono una bussola magnetica naturale che le guida attraverso gli oceani durante migrazioni transoceaniche.",
+        "Il loro carapace ospita un ecosistema in miniatura: alghe, cirripedi e piccoli crostacei vivono come 'passeggeri' permanenti.",
+        "Vivono fino a 67 anni in natura, diventando sessualmente mature tra i 17 e i 33 anni.",
+        "Le femmine depongono in media 110 uova per nido, ma solo 1 su 1000 raggiunge l'età adulta in condizioni naturali.",
+        "Le tartarughe marine 'piangono' per espellere il sale in eccesso ingerito con l'acqua di mare attraverso ghiandole specializzate.",
+        "Hanno un eccellente senso dell'orientamento e possono percepire il campo magnetico terrestre con precisione di 10-20 km.",
+        "I piccoli impiegano circa 3 giorni per emergere collettivamente dalla sabbia dopo la schiusa, coordinati da vibrazioni.",
+        "Le tartarughe marine dormono sott'acqua, emergendo solo per respirare ogni 4-5 ore durante il riposo.",
+        "Il loro olfatto è così sviluppato da individuare le spiagge di nascita dopo 30 anni, riconoscendo odori specifici.",
+        "Le Caretta Caretta comunicano tra loro attraverso suoni subacquei impercettibili all'orecchio umano, a frequenze tra 50-1200 Hz.",
+        ];
     
-    readMoreButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const articleId = this.getAttribute('data-article');
-            const articleContent = getArticleContent(articleId);
-            
-            if (articleContent) {
-                openModal(articleContent);
-            }
-        });
+    let currentFactIndex = 0;
+    const factText = document.getElementById('fact-text');
+    const factIndex = document.getElementById('fact-index');
+    const factTotal = document.getElementById('fact-total');
+    const newFactBtn = document.getElementById('new-fact-btn');
+    
+    if (!factText || !newFactBtn) return;
+    
+    // Set total facts count
+    if (factTotal) {
+        factTotal.textContent = turtleFacts.length;
+    }
+    
+    // Initial fact
+    updateFactDisplay();
+    
+    // New fact button
+    newFactBtn.addEventListener('click', () => {
+        let newIndex;
+        do {
+            newIndex = Math.floor(Math.random() * turtleFacts.length);
+        } while (newIndex === currentFactIndex && turtleFacts.length > 1);
+        
+        currentFactIndex = newIndex;
+        updateFactDisplay();
     });
+    
+    // Auto rotate facts every 15 seconds
+    setInterval(() => {
+        let nextIndex = (currentFactIndex + 1) % turtleFacts.length;
+        currentFactIndex = nextIndex;
+        updateFactDisplay();
+    }, 15000);
+    
+    function updateFactDisplay() {
+        if (factText) {
+            // Fade out
+            factText.style.opacity = '0';
+            factText.style.transform = 'translateY(10px)';
+            
+            setTimeout(() => {
+                factText.textContent = turtleFacts[currentFactIndex];
+                if (factIndex) {
+                    factIndex.textContent = currentFactIndex + 1;
+                }
+                
+                // Fade in
+                factText.style.opacity = '1';
+                factText.style.transform = 'translateY(0)';
+            }, 300);
+        }
+    }
 }
 
-// Article Content Database
-function getArticleContent(articleId) {
+// Modal System
+function initModal() {
+    const modal = document.getElementById('articleModal');
+    const modalBody = document.getElementById('modal-body');
+    const modalClose = modal?.querySelector('.modal-close');
+    
+    if (!modal || !modalBody) return;
+    
+    // Close modal
+    modalClose?.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeModal();
+    });
+    
+    // Close with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+    
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    // Expose openModal function globally
+    window.openModal = function(content) {
+        modalBody.innerHTML = content;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+}
+
+// Article Navigation
+function initArticleNavigation() {
     const articles = {
         'focus1': `
             <article class="article-modal">
@@ -342,38 +323,53 @@ function getArticleContent(articleId) {
         `
     };
     
-    return articles[articleId] || '<p>Contenuto non disponibile.</p>';
-}
-
-// Article Tabs
-function initArticleTabs() {
-    const tabs = document.querySelectorAll('.articles-tabs .tab-button');
-    
-    tabs.forEach(tab => {
-        tab.addEventListener('click', function() {
-            // Remove active class from all tabs
-            tabs.forEach(t => {
-                t.classList.remove('active');
-                t.setAttribute('aria-selected', 'false');
-            });
-            
-            // Add active class to clicked tab
-            this.classList.add('active');
-            this.setAttribute('aria-selected', 'true');
-            
-            // Hide all tab contents
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-                content.setAttribute('aria-hidden', 'true');
-            });
-            
-            // Show corresponding content
-            const tabId = this.getAttribute('data-tab');
-            const activeContent = document.getElementById(`tab-${tabId}`);
-            if (activeContent) {
-                activeContent.classList.add('active');
-                activeContent.setAttribute('aria-hidden', 'false');
-            }
+    // Read more buttons
+    document.querySelectorAll('.btn-read-more').forEach(button => {
+        button.addEventListener('click', function() {
+            const articleId = this.getAttribute('data-article');
+            const articleContent = articles[articleId] || '<p>Contenuto non disponibile.</p>';
+            window.openModal(articleContent);
         });
     });
 }
+
+// Utility Functions
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Add CSS for animations
+document.head.insertAdjacentHTML('beforeend', `
+    <style>
+        .stat-card, .article-card, .threat-card {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .stat-card.animate, .article-card.animate, .threat-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .fact-text {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .stat-card, .article-card, .threat-card, .fact-text {
+                transition: none;
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+`);
